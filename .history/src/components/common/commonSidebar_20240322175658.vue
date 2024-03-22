@@ -103,14 +103,9 @@ export default {
           title: "vchart图表",
         },
         {
-          icon: "el-icon-notebook-2",
+          icon: "el-icon-pie-chart",
           index: "order",
           title: "订单管理",
-        },
-        {
-          icon: "el-icon-notebook-2",
-          index: "user",
-          title: "用户中心",
         }
       ],
     };

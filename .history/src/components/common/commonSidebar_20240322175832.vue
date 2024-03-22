@@ -109,7 +109,7 @@ export default {
         },
         {
           icon: "el-icon-notebook-2",
-          index: "user",
+          index: "order",
           title: "用户中心",
         }
       ],

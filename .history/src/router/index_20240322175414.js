@@ -51,13 +51,8 @@ export default new Router({
 				{
 					path: 'order',
 					component: () => import('../pages/order'),
-					meta: { title: '订单管理' }
+					meta: { title: '基本表格' }
 				},
-				{
-					path: 'user',
-					component: () => import('../pages/user'),
-					meta: { title: '用户中心' }
-				}
 			]
 		},
 		{

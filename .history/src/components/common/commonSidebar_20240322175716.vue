@@ -106,11 +106,6 @@ export default {
           icon: "el-icon-notebook-2",
           index: "order",
           title: "订单管理",
-        },
-        {
-          icon: "el-icon-notebook-2",
-          index: "user",
-          title: "用户中心",
         }
       ],
     };

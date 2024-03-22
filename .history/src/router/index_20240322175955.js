@@ -54,7 +54,7 @@ export default new Router({
 					meta: { title: '订单管理' }
 				},
 				{
-					path: 'user',
+					path: 'order',
 					component: () => import('../pages/user'),
 					meta: { title: '用户中心' }
 				}
