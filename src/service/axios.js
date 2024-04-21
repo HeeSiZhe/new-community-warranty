@@ -10,7 +10,7 @@ let options = {
 },
 	loadingPage
 
-const BASE_URL = "http://175.24.95.198:8099/"
+const BASE_URL = "http://127.0.0.1:3007/"
 let headers = {
 	Accept: 'application/json;charset=utf-8',
 	'Content-Type': 'application/json;charset=utf-8'

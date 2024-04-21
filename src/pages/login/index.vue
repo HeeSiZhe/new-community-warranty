@@ -6,7 +6,7 @@
           src="../../assets/images/logo.png"
           style="border-radius: 10px; width: 80px; height: 80px"
         />
-        <span class="title">通用中后台管理系统</span>
+        <span class="title">社区报修管理系统</span>
       </div>
       <div class="right-wrapper">
         <el-form :model="loginForm" :rules="loginRules" ref="loginRef">
@@ -34,6 +34,9 @@
           <el-form-item style="margin-top: 30px">
             <el-button type="primary" style="width: 100%" size="large" @click="handleLogin">登录</el-button>
           </el-form-item>
+          <div style="position: relative;">
+            <el-button @click="$router.push('/register')" style="right: 0;position: absolute;" type="small">立即注册</el-button>
+          </div>
         </el-form>
       </div>
     </div>
@@ -41,14 +44,14 @@
 </template>
 
 <script>
-import { fetchLogin } from "../../api/login";
+import { fetchLogin } from "../../api/index.js";
 export default {
   name: "login",
   data() {
     return {
       loginForm: {
-        username: "15850796186",
-        password: "123456",
+        username: "",
+        password: "",
       },
       loginRules: {
         username: [
@@ -63,26 +66,25 @@ export default {
   methods: {
     // 登录请求
     handleLogin() {
-      this.$router.push("/dashboard");
-      // this.$refs["loginRef"].validate((valid) => {
-      //   if (!valid) {
-      //     return;
-      //   } else {
-      //     let params = {
-      //       username: this.loginForm.username,
-      //       password: this.loginForm.password,
-      //     };
-      //     fetchLogin(params).then((res) => {
-      //       if (res.code === 200) {
-      //         localStorage.setItem("token", res.data);
-      //         this.$router.push("/dashboard");
-      //       } else {
-      //         this.$message.error(res.data);
-      //         return;
-      //       }
-      //     });
-      //   }
-      // });
+      this.$refs["loginRef"].validate((valid) => {
+        if (!valid) {
+          return;
+        } else {
+          let params = {
+            username: this.loginForm.username,
+            password: this.loginForm.password,
+          };
+          fetchLogin(params).then((res) => {
+            if (res.code === 200) {
+              localStorage.setItem("token", res.token);
+              this.$router.push("/dashboard");
+            } else {
+              this.$message.error(res.message);
+              return;
+            }
+          });
+        }
+      });
     },
   },
 };
@@ -93,7 +95,7 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
-  background-image: url("../../assets/images/login_bg.jpg");
+  background-image: url("../../assets/images/login.jpg");
   background-size: cover;
   display: flex;
   flex-direction: row;

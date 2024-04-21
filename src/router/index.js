@@ -64,6 +64,11 @@ export default new Router({
 			path: '/login',
 			component: () => import('../pages/login'),
 			meta: { title: '登录' }
+		},
+		{
+			path: '/register',
+			component: () => import('../pages/register'),
+			meta: { title: '注册' }
 		}
 	]
 })

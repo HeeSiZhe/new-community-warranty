@@ -25,30 +25,38 @@
       @selection-change="handleSelectionChange"
     >
       <el-table-column type="selection" width="55"></el-table-column>
-      <el-table-column prop="name" label="姓名"></el-table-column>
-      <el-table-column prop="age" label="年龄"></el-table-column>
-      <el-table-column label="头像">
+      <el-table-column prop="orderName" label="名称"></el-table-column>
+      <el-table-column label="维修类型">
         <template slot-scope="scope">
-          <el-image
-            lazy
-            style="width: 50px; height: 50px;border-radius: 5px"
-            :src="scope.row.img"
-            :preview-src-list="scope.row.srcList"
-          ></el-image>
+          <el-column v-if="scope.row.orderType === '0'">电器维修</el-column>
+          <el-column v-if="scope.row.orderType === '1'">水电维修</el-column>
+          <el-column v-if="scope.row.orderType === '2'">门窗维修</el-column>
+          <el-column v-if="scope.row.orderType === '3'">墙面维修</el-column>
         </template>
       </el-table-column>
-      <el-table-column prop="school" label="学校"></el-table-column>
       <el-table-column label="状态">
         <template slot-scope="scope">
-          <el-tag v-if="scope.row.status === 0" type="danger">异常</el-tag>
-          <el-tag v-else type="success">正常</el-tag>
+          <el-tag v-if="scope.row.orderStatus === '0'" type="danger"
+            >未处理</el-tag
+          >
+          <el-tag v-if="scope.row.orderStatus === '1'" type="warning"
+            >待维修</el-tag
+          >
+          <el-tag v-if="scope.row.orderStatus === '2'" type="success"
+            >已完成</el-tag
+          >
         </template>
       </el-table-column>
-      <el-table-column prop="date" label="入学时间"></el-table-column>
       <el-table-column label="操作">
-        <template>
+        <template slot-scope="scope">
           <el-button size="mini" plain type="primary">编辑</el-button>
-          <el-button size="mini" plain type="danger">删除</el-button>
+          <el-button
+            @click="handleClick(scope.row)"
+            size="mini"
+            plain
+            type="danger"
+            >删除</el-button
+          >
         </template>
       </el-table-column>
     </el-table>
@@ -66,57 +74,12 @@
 </template>
 
 <script>
+import { getOrderList, deleteOrder } from "../../api/index.js";
+
 export default {
-  name: "btable",
   data() {
     return {
-      tableData: [
-        {
-          name: "启回收",
-          age: 18,
-          school: "南京航空航天大学",
-          date: "2020-10-01",
-          img: "https://www.qihuishou.club/images/logo.png",
-          srcList: ["https://www.qihuishou.club/images/logo.png"],
-          status: 1,
-        },
-        {
-          name: "启回收",
-          age: 18,
-          school: "南京航空航天大学",
-          date: "2020-10-01",
-          img: "https://www.qihuishou.club/images/logo.png",
-          srcList: ["https://www.qihuishou.club/images/logo.png"],
-          status: 0,
-        },
-        {
-          name: "启回收",
-          age: 18,
-          school: "南京理工大学",
-          date: "2020-10-01",
-          img: "https://www.qihuishou.club/images/logo.png",
-          srcList: ["https://www.qihuishou.club/images/logo.png"],
-          status: 1,
-        },
-        {
-          name: "启回收",
-          age: 18,
-          school: "南京航空航天大学",
-          date: "2020-10-01",
-          img: "https://www.qihuishou.club/images/logo.png",
-          srcList: ["https://www.qihuishou.club/images/logo.png"],
-          status: 0,
-        },
-        {
-          name: "启回收",
-          age: 18,
-          school: "南京理工大学",
-          date: "2020-10-01",
-          img: "https://www.qihuishou.club/images/logo.png",
-          srcList: ["https://www.qihuishou.club/images/logo.png"],
-          status: 1,
-        },
-      ],
+      tableData: [],
       total: 1000,
       currentPage4: 0,
       formInline: {
@@ -125,7 +88,39 @@ export default {
       },
     };
   },
+  mounted() {
+    this.getOrderListFn();
+  },
   methods: {
+    handleClick(row) {
+      const params = { id: row.id };
+      this.$confirm("确定删除该订单吗?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          deleteOrder(params).then((res) => {
+            if (res.code === 200) {
+              this.$message.success("删除成功");
+              this.getOrderListFn();
+            }
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消删除",
+          });
+        });
+    },
+    getOrderListFn() {
+      getOrderList().then((res) => {
+        if (res.code === 200) {
+          this.tableData = res.data;
+        }
+      });
+    },
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
     },
