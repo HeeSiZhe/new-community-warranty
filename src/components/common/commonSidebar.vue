@@ -67,40 +67,45 @@ export default {
           index: "dashboard",
           title: "系统首页",
         },
-        {
-          icon: "el-icon-notebook-2",
-          index: "table",
-          title: "基础表格",
-        },
-        {
-          icon: "el-icon-reading",
-          index: "3",
-          title: "表单相关",
-          subs: [
-            {
-              index: "form",
-              title: "基本表单",
-            },
-            {
-              index: "form-detail",
-              title: "表单详情",
-            },
-          ],
-        },
-        {
-          icon: "el-icon-tickets",
-          index: "markdown",
-          title: "markdown编辑器",
-        },
-        {
-          icon: "el-icon-upload",
-          index: "upload",
-          title: "文件上传",
-        },
+        // {
+        //   icon: "el-icon-notebook-2",
+        //   index: "table",
+        //   title: "基础表格",
+        // },
+        // {
+        //   icon: "el-icon-reading",
+        //   index: "3",
+        //   title: "表单相关",
+        //   subs: [
+        //     {
+        //       index: "form",
+        //       title: "基本表单",
+        //     },
+        //     {
+        //       index: "form-detail",
+        //       title: "表单详情",
+        //     },
+        //   ],
+        // },
+        // {
+        //   icon: "el-icon-tickets",
+        //   index: "markdown",
+        //   title: "markdown编辑器",
+        // },
+        // {
+        //   icon: "el-icon-upload",
+        //   index: "upload",
+        //   title: "文件上传",
+        // },
         {
           icon: "el-icon-pie-chart",
           index: "charts",
-          title: "vchart图表",
+          title: "数据统计",
+        },
+        {
+          icon: "el-icon-reading",
+          index: "subOrder",
+          title: "提交订单",
         },
         {
           icon: "el-icon-notebook-2",

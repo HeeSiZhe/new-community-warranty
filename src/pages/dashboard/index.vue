@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <el-row :gutter="15">
+    <!-- <el-row :gutter="15">
       <el-col :span="3">
         <el-card class="box-card">
           <div class="card-item">
@@ -81,7 +81,7 @@
           </div>
         </el-card>
       </el-col>
-    </el-row>
+    </el-row> -->
 
     <div style="margin-top: 20px">
       <el-row :gutter="15">
@@ -93,14 +93,14 @@
                 <i class="el-icon-user" style="color: #6190e8"></i>
               </el-tooltip>
             </div>
-            <div style="font-size: 30px;color: #515a6e">66666人</div>
+            <div style="font-size: 30px;color: #515a6e">500人</div>
           </el-card>
         </el-col>
         <el-col :span="6">
           <el-card class="box-card">
             <div slot="header" class="clearfix">
-              <span>总订单数</span>
-              <el-tooltip style="float:right" content="总订单数" placement="top-start">
+              <span>总维修数</span>
+              <el-tooltip style="float:right" content="总维修数" placement="top-start">
                 <i class="el-icon-document" style="color: #6190e8"></i>
               </el-tooltip>
             </div>
@@ -110,8 +110,8 @@
         <el-col :span="6">
           <el-card class="box-card">
             <div slot="header" class="clearfix">
-              <span>今日完成订单数</span>
-              <el-tooltip style="float:right" content="总订单数" placement="top-start">
+              <span>今日完成维修数</span>
+              <el-tooltip style="float:right" content="今日完成维修数" placement="top-start">
                 <i class="el-icon-view" style="color: #6190e8"></i>
               </el-tooltip>
             </div>
@@ -123,12 +123,12 @@
         <el-col :span="6">
           <el-card class="box-card">
             <div slot="header" class="clearfix">
-              <span>今日销售额</span>
-              <el-tooltip style="float:right" content="总订单数" placement="top-start">
+              <span>今日反馈数</span>
+              <el-tooltip style="float:right" content="今日销售额" placement="top-start">
                 <i class="el-icon-s-promotion" style="color: #6190e8"></i>
               </el-tooltip>
             </div>
-            <div style="color: #6190e8;font-size: 30px">￥88291.92</div>
+            <div style="color: #6190e8;font-size: 30px">82条</div>
           </el-card>
         </el-col>
       </el-row>
@@ -156,36 +156,36 @@ export default {
   name: "dashboard",
   data() {
     this.chartSettings = {
-      metrics: ["总订单数", "完成订单数"],
+      metrics: ["水电维修", "门窗维修"],
       dimension: ["日期"],
     };
     return {
       chartData1: {
-        columns: ["日期", "总订单数", "完成订单数"],
+        columns: ["日期", "水电维修", "门窗维修"],
         rows: [
-          { 日期: "1/1", 总订单数: 2530, 完成订单数: 230 },
-          { 日期: "1/2", 总订单数: 3530, 完成订单数: 530 },
-          { 日期: "1/3", 总订单数: 2923, 完成订单数: 923 },
-          { 日期: "1/4", 总订单数: 1723, 完成订单数: 723 },
-          { 日期: "1/5", 总订单数: 3792, 完成订单数: 792 },
-          { 日期: "1/6", 总订单数: 4593, 完成订单数: 493 },
-          { 日期: "1/7", 总订单数: 4593, 完成订单数: 193 },
-          { 日期: "1/8", 总订单数: 4593, 完成订单数: 293 },
-          { 日期: "1/9", 总订单数: 593, 完成订单数: 593 },
-          { 日期: "1/10", 总订单数: 493, 完成订单数: 293 },
-          { 日期: "1/11", 总订单数: 1593, 完成订单数: 593 },
-          { 日期: "1/12", 总订单数: 4593, 完成订单数: 593 },
+          { 日期: "1/1", 水电维修: 2530, 门窗维修: 230 },
+          { 日期: "1/2", 水电维修: 3530, 门窗维修: 530 },
+          { 日期: "1/3", 水电维修: 2923, 门窗维修: 923 },
+          { 日期: "1/4", 水电维修: 1723, 门窗维修: 723 },
+          { 日期: "1/5", 水电维修: 3792, 门窗维修: 792 },
+          { 日期: "1/6", 水电维修: 4593, 门窗维修: 493 },
+          { 日期: "1/7", 水电维修: 4593, 门窗维修: 193 },
+          { 日期: "1/8", 水电维修: 4593, 门窗维修: 293 },
+          { 日期: "1/9", 水电维修: 593, 门窗维修: 593 },
+          { 日期: "1/10", 水电维修: 493, 门窗维修: 293 },
+          { 日期: "1/11", 水电维修: 1593, 门窗维修: 593 },
+          { 日期: "1/12", 水电维修: 4593, 门窗维修: 593 },
         ],
       },
       chartData2: {
-        columns: ["日期", "下载量", "点击量"],
+        columns: ["日期", "电器维修", "墙面维修"],
         rows: [
-          { 日期: "1/1", 下载量: 1393, 点击量: 1093 },
-          { 日期: "1/2", 下载量: 3530, 点击量: 3230 },
-          { 日期: "1/3", 下载量: 2923, 点击量: 2623 },
-          { 日期: "1/4", 下载量: 1723, 点击量: 1423 },
-          { 日期: "1/5", 下载量: 3792, 点击量: 3492 },
-          { 日期: "1/6", 下载量: 4593, 点击量: 4293 },
+          { 日期: "1/1", 电器维修: 1393, 墙面维修: 1093 },
+          { 日期: "1/2", 电器维修: 3530, 墙面维修: 3230 },
+          { 日期: "1/3", 电器维修: 2923, 墙面维修: 2623 },
+          { 日期: "1/4", 电器维修: 1723, 墙面维修: 1423 },
+          { 日期: "1/5", 电器维修: 3792, 墙面维修: 3492 },
+          { 日期: "1/6", 电器维修: 4593, 墙面维修: 4293 },
         ],
       },
     };

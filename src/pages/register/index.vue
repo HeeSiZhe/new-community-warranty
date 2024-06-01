@@ -88,7 +88,7 @@
     position: relative;
     width: 100%;
     height: 100%;
-    background-image: url("../../assets/images/login.jpg");
+    background-image: url("../../assets/images/login.png");
     background-size: cover;
     display: flex;
     flex-direction: row;

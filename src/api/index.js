@@ -19,3 +19,18 @@ export function getOrderList(params) {
 export function deleteOrder(params) {
 	return httpUtil.post("/my/order/deleteOrder", params)
 }
+
+// 修改订单
+export function editOrder(params) {
+	return httpUtil.post("/my/order/updateOrder", params)
+}
+
+// 新增订单
+export function addOrder(params) {
+	return httpUtil.post("/my/order/addOrder", params)
+}
+
+// 查询个人中心
+export function getUserInfo(params) {
+	return httpUtil.post("/my/get/userinfo", params)
+}

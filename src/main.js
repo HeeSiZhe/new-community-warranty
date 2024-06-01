@@ -9,7 +9,9 @@ import VeLine from 'v-charts/lib/line.common' //折线图
 import VeBar from 'v-charts/lib/bar.common' // 条形图
 import VeHistogram from 'v-charts/lib/histogram.common' //柱状图
 import VePie from 'v-charts/lib/pie.common' // 饼图
+import VueParticles from 'vue-particles'
 
+Vue.use(VueParticles)
 Vue.config.productionTip = false
 
 Vue.use(ElementUI, {

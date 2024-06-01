@@ -77,6 +77,7 @@ export default {
           fetchLogin(params).then((res) => {
             if (res.code === 200) {
               localStorage.setItem("token", res.token);
+              localStorage.setItem("userId", res.id);
               this.$router.push("/dashboard");
             } else {
               this.$message.error(res.message);
@@ -95,7 +96,7 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
-  background-image: url("../../assets/images/login.jpg");
+  background-image: url("../../assets/images/login.png");
   background-size: cover;
   display: flex;
   flex-direction: row;

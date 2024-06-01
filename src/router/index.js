@@ -49,6 +49,11 @@ export default new Router({
 					meta: { title: 'vchart图表' }
 				},
 				{
+					path: 'subOrder',
+					component: () => import('../pages/subOrder'),
+					meta: { title: '提交订单' }
+				},
+				{
 					path: 'order',
 					component: () => import('../pages/order'),
 					meta: { title: '订单管理' }
